@@ -1,6 +1,6 @@
-class CreateSuffers < ActiveRecord::Migration[5.2]
+class CreateExperiences < ActiveRecord::Migration[5.2]
   def change
-    create_table :suffers do |t|
+    create_table :experiences do |t|
       t.integer :patient_id
       t.integer :symptom_id
 

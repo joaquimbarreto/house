@@ -1,0 +1,9 @@
+<h2>All Diagnoses</h2>
+
+<ul>
+  <% @diagnoses.each do |diagnosis| %>
+  <li>
+    <%= link_to diagnosis.name, diagnosis%>
+  </li>
+  <% end %>
+</ul>

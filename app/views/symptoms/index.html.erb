@@ -1,0 +1,9 @@
+<h2>All Symptoms</h2>
+
+<ul>
+  <% @symptoms.each do |symptom| %>
+  <li>
+    <%= link_to symptom.name, symptom %>
+  </li>
+  <% end %>
+</ul>

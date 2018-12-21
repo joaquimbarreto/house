@@ -1,8 +1,8 @@
 class Symptom < ApplicationRecord
 
   has_many :diagnoses
-  has_many :issues, through: :diagnoses
-  has_many :suffers
-  has_many :patients, through: :suffers
+  has_many :diseases, through: :diagnoses
+  has_many :experiences
+  has_many :patients, through: :experiences
 
 end

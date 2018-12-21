@@ -1,2 +1,44 @@
 class DiagnosesController < ApplicationController
+  before_action :find_diagnosis, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @diagnoses = Diagnosis.all
+  end
+
+  def show
+
+  end
+
+  def new
+    @diagnosis = Diagnosis.new
+  end
+
+  def create
+    @diagnosis.create(diagnosis_params)
+    redirect_to diagnosis_path
+  end
+
+  def edit
+
+  end
+
+  def update
+    @diagnosis.update(diagnosis_params)
+  end
+
+  def destroy
+    @diagnosis.destroy
+    redirect_to diagnoses_path
+  end
+
+  private
+
+  def diagnosis_params
+    params.(:diagnosis).permit(:symptom_id, :issue_id)
+  end
+
+  def find_diagnosis
+    @diagnosis = Diagnosis.find(params[:id])
+  end
+
 end
