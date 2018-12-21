@@ -1,0 +1,2 @@
+class SuffersController < ApplicationController
+end

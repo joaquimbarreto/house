@@ -1,0 +1,2 @@
+class Suffer < ApplicationRecord
+end
