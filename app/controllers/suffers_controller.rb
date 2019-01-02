@@ -36,6 +36,7 @@ class SuffersController < ApplicationController
     @suffer.destroy
     redirect_to suffers_path
   end
+  
 
   private
 
