@@ -1,4 +1,6 @@
 Issue.destroy_all
+Symptom.destroy_all
+
 @array_of_disease_hashes = [
             {
              name: "Arthritis",
@@ -162,15 +164,16 @@ It's most recognisable by the painful swellings at the side of the face under th
             },
 
     ]
-def all_symptoms
-  @all_symptoms = []
-  @array_of_disease_hashes.each do
-    |disease| array << disease[:disease_symptoms]
-  end
-  @all_symptoms.flatten.uniq.sort
-end
 
 
 @array_of_disease_hashes.each do |h|
-  Issue.create(name: h[:name], symptoms: h[:disease_symptoms])
+  Issue.create(name: h[:name])
+end
+
+@all_symptoms = @array_of_disease_hashes.map do
+  |disease| disease[:disease_symptoms]
+  end
+@all_symptoms.flatten!.uniq!.sort!
+@all_symptoms.each do |s|
+  Symptom.create(name: s)
 end
