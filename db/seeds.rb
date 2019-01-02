@@ -1,3 +1,4 @@
+
 Issue.destroy_all
 Symptom.destroy_all
 
@@ -253,11 +254,116 @@ It's most recognisable by the painful swellings at the side of the face under th
 
     ]
 
+    # create an array of symptoms and the category they belong to
+    # then iterate over the array, find by the name and update the symptom
 
-@array_of_disease_hashes.each do |h|
-  Issue.create(name: h[:name])
+  @symptoms_and_categories =
+      {"Aching body": "All",
+      "Anal bleeding": "Pelvis",
+      "Anal itching": "Pelvis",
+      "Balance problems": "Head",
+      "Blisters on feet": "Legs",
+      "Blood in urine": "Pelvis",
+      "Bloodshot eyes": "Head",
+      "Blurred vision": "Head",
+      "Burning/burning eyes": "Head",
+      "Chest pain": "Chest",
+      "Constipation": "Stomach",
+      "Coughing": "Chest",
+      "Cracking/peeling foot skin": "Legs",
+      "Cuts or wounds that heal slowly": "All",
+      "Dark-coloured patches of skin": "All",
+      "Diarrhoea": "Stomach",
+      "Difficulty breathing": "Chest",
+      "Difficulty sleeping": "All",
+      "Difficulty swallowing": "Head",
+      "Difficulty walking": "Legs",
+      "Drooling": "Head",
+      "Drowsiness": "Head",
+      "Dry mouth": "Head",
+      "Dry, sensitive skin": "All",
+      "Fatigue": "All",
+      "Feeling very thirsty": "Head",
+      "Fever": "All",
+      "Genital itching": "Pelvis",
+      "Growths or lumps on skin": "All",
+      "Hard lump around the anus": "Pelvis",
+      "Headache": "Head",
+      "Hearing loss": "Head",
+      "Inflamed eyes": "Head",
+      "Inflamed tonsils": "Head",
+      "Involuntary tremors": "All",
+      "Itching/stinging between the toes": "Feet",
+      "Itchy skin": "All",
+      "Joint inflammation": "Limbs",
+      "Joint pain": "Limbs",
+      "Large appetite": "Stomach",
+      "Loss of appetite": "Stomach",
+      "Loss of smell": "Head",
+      "Lost voice": "Head",
+      "Muscle pain": "All",
+      "Muscle spasms": "All",
+      "Muscle stiffness": "All",
+      "Muscle weakness": "All",
+      "Nausea": "Stomach",
+      "Nerve pain": "All",
+      "Night sweats": "All",
+      "Numbness of skin": "All",
+      "Over-production of mucus": "Chest",
+      "Pain during bowel movements": "Stomach",
+      "Pain in abdomen": "Stomach",
+      "Pain when eating": "Head",
+      "Rapid heartbeat": "Chest",
+      "Rash": "All",
+      "Recurring chest infections": "Chest",
+      "Red, inflamed skin": "All",
+      "Red, shiny joints": "Limbs",
+      "Restricted movement": "All",
+      "Runny nose": "Head",
+      "Sensitivity to light": "Head",
+      "Sight loss": "Head",
+      "Skin growths around the genitals": "Pelvis",
+      "Skin sores": "All",
+      "Slurred speach": "Head",
+      "Sore throat": "Head",
+      "Swollen abdomen": "Stomach",
+      "Swollen feet or hands": "Limbs",
+      "Swollen glands": "All",
+      "Tight Chest": "Chest",
+      "Tinnitus": "Head",
+      "Ulcers on soles of feet": "Limbs",
+      "Unable to gain weight": "All",
+      "Uncontrollable twitches": "All",
+      "Unusually firm or floppy muscles": "All",
+      "Urinating more frequently than normal": "Pelvis",
+      "Vertigo": "Head",
+      "Watering eyes": "Head",
+      "Weak arms or legs": "Limbs",
+      "Weakened grip": "Limbs",
+      "Weight loss": "All",
+      "Wheezing": "Chest",
+      "White patches in the mouth": "Head"}
+
+    @array_of_disease_hashes.each do |h|
+     Issue.create(name: h[:name])
+    end
+
+    @all_symptoms = @array_of_disease_hashes.map do
+     |disease| disease[:disease_symptoms]
+     end
+    @all_symptoms.flatten!.uniq!.sort!
+    @all_symptoms.each do |s|
+     Symptom.create(name: s)
+    end
+
+
+def add_category_to_symptom(symptom)
+   symptom_name = Symptom.name
+   cat = @symptoms_and_categories[:symptom_name]
+   symptom.update(category: cat)
 end
 
+<<<<<<< HEAD
 @all_symptoms = @array_of_disease_hashes.map do
   |disease| disease[:disease_symptoms]
   end
@@ -273,3 +379,15 @@ def add_category_to_symptoms_table(symptom)
 end
 
 Symptom.all.each {|s| add_category_to_symptoms_table(s) }
+=======
+Symptom.all.each {|symp| add_category_to_symptom(symp) }
+
+
+
+
+#
+# Symptom.all.each do
+#   |simp| s = simp.name
+#   simp.update(category: @symptoms_and_categories[:s] )
+# end
+>>>>>>> 7aa94a7f66731e552bbbd0f2cc6b285fb6a3e048
