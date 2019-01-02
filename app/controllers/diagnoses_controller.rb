@@ -14,8 +14,8 @@ class DiagnosesController < ApplicationController
   end
 
   def create
-    @diagnosis.create(diagnosis_params)
-    redirect_to diagnosis_path
+    @diagnosis = Diagnosis.create(diagnosis_params)
+    redirect_to diagnosis_path(@diagnosis)
   end
 
   def edit
@@ -34,7 +34,7 @@ class DiagnosesController < ApplicationController
   private
 
   def diagnosis_params
-    params.(:diagnosis).permit(:symptom_id, :issue_id)
+    params.require(:diagnosis).permit(:symptom_id, :issue_id)
   end
 
   def find_diagnosis

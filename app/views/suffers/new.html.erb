@@ -1,0 +1,11 @@
+<h2>New Symptoms</h2>
+
+<%= form_for @suffer do |f| %>
+
+  <%= f.collection_select :patient_id, Patient.all, :id, :name %>
+
+  <%= f.collection_check_boxes :symptom_id, Symptom.all, :id, :name %>
+
+  <%= f.submit "Diagnosis"%>
+
+<% end %>

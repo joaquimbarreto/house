@@ -1,0 +1,9 @@
+<h2>All Suffers</h2>
+
+<ul>
+  <% @suffers.each do |suffer| %>
+  <li>
+    Suffer: <%=  link_to suffer.id, suffer %>
+  </li>
+  <% end %>
+</ul>

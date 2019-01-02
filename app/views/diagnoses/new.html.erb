@@ -1,1 +1,9 @@
 <h2>New Diagnosis</h2>
+
+<%= form_for @diagnosis do |f| %>
+
+  <%= f.collection_check_boxes :symptom_id, Symptom.all, :id, :name %>
+
+  <%= f.submit %>
+
+<% end %>
