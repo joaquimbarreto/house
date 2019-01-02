@@ -1,4 +1,5 @@
 class SuffersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :find_suffer, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,9 +15,13 @@ class SuffersController < ApplicationController
   end
 
   def create
-    @suffer = Suffer.create(suffer_params)
+    # 2 ways. first is to have an array in the suffer model. symptom_ids []
+    # or you create many suffers (treat it as a joinclass)
+
+    # add_column :suffer, :symptom_ids, array: true, default: []
+    #suffer_params[:sympton_id]
+    @suffer = Suffer.create!(suffer_params)
     redirect_to suffer_path(@suffer)
-    byebug
   end
 
   def edit
@@ -35,7 +40,9 @@ class SuffersController < ApplicationController
   private
 
   def suffer_params
-    params.require(:suffer).permit(:patient_id, symptom_id: [])
+    p = params.require(:suffer).permit(:patient_id, symptom_ids: [])
+   p[:symptom_ids] = p[:symptom_ids].reject(&:blank?)
+   p
   end
 
   def find_suffer

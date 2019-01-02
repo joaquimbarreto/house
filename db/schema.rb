@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_151600) do
+ActiveRecord::Schema.define(version: 2018_12_21_132242) do
 
   create_table "diagnoses", force: :cascade do |t|
     t.integer "symptom_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_151600) do
 
   create_table "suffers", force: :cascade do |t|
     t.integer "patient_id"
-    t.integer "symptom_id"
+    t.integer "symptom_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2019_01_02_151600) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
   end
 
 end

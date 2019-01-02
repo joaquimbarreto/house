@@ -348,13 +348,6 @@ It's most recognisable by the painful swellings at the side of the face under th
      Issue.create(name: h[:name])
     end
 
-    @all_symptoms = @array_of_disease_hashes.map do
-     |disease| disease[:disease_symptoms]
-     end
-    @all_symptoms.flatten!.uniq!.sort!
-    @all_symptoms.each do |s|
-     Symptom.create(name: s)
-    end
 
 
 def add_category_to_symptom(symptom)
@@ -371,10 +364,5 @@ end
   Symptom.create(name: s)
 end
 
-def add_category_to_symptoms_table(symptom)
-   symptom_name = Symptom.name
-   cat = @symptoms_and_categories[:symptom_name]
-   s.update(category: cat)
-end
 
 Symptom.all.each {|s| add_category_to_symptoms_table(s) }
