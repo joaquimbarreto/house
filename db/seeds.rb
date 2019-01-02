@@ -363,7 +363,6 @@ def add_category_to_symptom(symptom)
    symptom.update(category: cat)
 end
 
-<<<<<<< HEAD
 @all_symptoms = @array_of_disease_hashes.map do
   |disease| disease[:disease_symptoms]
   end
@@ -379,15 +378,3 @@ def add_category_to_symptoms_table(symptom)
 end
 
 Symptom.all.each {|s| add_category_to_symptoms_table(s) }
-=======
-Symptom.all.each {|symp| add_category_to_symptom(symp) }
-
-
-
-
-#
-# Symptom.all.each do
-#   |simp| s = simp.name
-#   simp.update(category: @symptoms_and_categories[:s] )
-# end
->>>>>>> 7aa94a7f66731e552bbbd0f2cc6b285fb6a3e048
