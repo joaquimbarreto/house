@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2>Suffering From:</h2>
 
 <ul>
@@ -12,3 +13,14 @@
 <p><%= link_to"Suffers", suffers_path %></p>
 
 <p><%= link_to"Home", welcome_index_path %></p>
+=======
+<h2>Potential Illnesses You May Suffer From:</h2>
+<ul>
+    <% @suffer.possible_issues.each do |issue| %>
+  <li>
+    <%= link_to issue.name, issue %>
+  </li>
+  <% end %>
+
+</ul>
+>>>>>>> da7a2f02dafc9bd49154638661d6fa333cde7539

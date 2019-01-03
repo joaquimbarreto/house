@@ -19,7 +19,7 @@ class DiagnosesController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
@@ -34,7 +34,7 @@ class DiagnosesController < ApplicationController
   private
 
   def diagnosis_params
-    params.require(:diagnosis).permit(:symptom_id, :issue_id)
+    params.require(:diagnosis).permit(:symptom_ids, :issue_id)
   end
 
   def find_diagnosis

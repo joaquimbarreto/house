@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_104535) do
+ActiveRecord::Schema.define(version: 2019_01_03_154121) do
 
   create_table "diagnoses", force: :cascade do |t|
     t.integer "symptom_id"
     t.integer "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "symptom_ids", default: "--- []\n"
   end
 
   create_table "issues", force: :cascade do |t|
@@ -37,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_01_03_104535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "symptom_ids", default: "--- []\n"
+    t.string "possible_issues"
+    t.string "text"
   end
 
   create_table "symptoms", force: :cascade do |t|

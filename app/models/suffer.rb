@@ -7,4 +7,6 @@ class Suffer < ApplicationRecord
     symptom_ids.map{|i| Symptom.find_by(i) }
   end
 
+
+
 end

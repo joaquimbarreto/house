@@ -8,4 +8,8 @@ class IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
   end
 
+  def symptoms_ids
+    self.diagnoses.symptom_ids
+  end
+
 end

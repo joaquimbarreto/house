@@ -14,6 +14,10 @@ class SuffersController < ApplicationController
     @suffer = Suffer.new
   end
 
+  def make_diagnosis_from_suffering
+
+  end
+
   def create
     # 2 ways. first is to have an array in the suffer model. symptom_ids []
     # or you create many suffers (treat it as a joinclass)
@@ -21,7 +25,9 @@ class SuffersController < ApplicationController
     # add_column :suffer, :symptom_ids, array: true, default: []
     #suffer_params[:sympton_id]
     @suffer = Suffer.create(suffer_params)
-    redirect_to patient_path(@suffer.patient)
+    @suffer.possible_issues = @suffer.symptoms.map {|s| s.possible_issues}
+    redirect_to suffer_path(@suffer)
+
   end
 
   def edit
@@ -49,5 +55,7 @@ class SuffersController < ApplicationController
   def find_suffer
     @suffer = Suffer.find(params[:id])
   end
+
+
 
 end

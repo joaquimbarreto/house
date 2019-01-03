@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'session/new'
+  get 'session/create'
+  get 'session/destroy'
   get 'welcome/index'
   resources :suffers
   resources :patients

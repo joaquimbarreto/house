@@ -1,5 +1,6 @@
 Issue.destroy_all
 Symptom.destroy_all
+Diagnosis.destroy_all
 
 @array_of_disease_hashes = [
             {
@@ -271,17 +272,17 @@ def create_symptoms
     |disease| disease[:disease_symptoms]
     end
   @all_symptoms.flatten!.uniq!.sort!
+
   @all_symptoms.each { |s| Symptom.create(name: s, category: @symptoms_and_categories[:s]) }
 end
 
-def create diagnoses
+def create_diagnoses
   @array_of_disease_hashes.each do |h|
-    issue = Issue.find_by(h[:name])
-    symptoms = Symptom.find_by(h[:symptoms])
-    symptoms.each do |s|
-
-      Diagnosis.create(symptom_id: s.id, issue_id: issue.id)
+    issue = Issue.find_by(name: h[:name])
+    symptom_arr = h[:disease_symptoms].map do |symptom_name|
+      Symptom.find_by(name: symptom_name)
     end
+    Diagnosis.create(symptom_ids: symptom_arr.map(&:id), issue_id: issue.id)
   end
 
 end
@@ -289,11 +290,8 @@ end
 
 create_issues
 create_symptoms
+create_diagnoses
 
-
-
-#Symptom.all.each {|symp| add_category_to_symptom(symp) }
-#
 
 
 0
