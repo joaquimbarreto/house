@@ -19,7 +19,7 @@ class DiagnosesController < ApplicationController
   end
 
   def edit
-
+    
   end
 
   def update
