@@ -1,6 +1,10 @@
 class Suffer < ApplicationRecord
 
   belongs_to :patient
-  belongs_to :symptom
-  
+  serialize :symptom_ids
+
+  def symptoms
+    symptom_ids.map{|i| Sympton.find(i) }
+  end
+
 end

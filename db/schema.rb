@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_221518) do
 
   create_table "suffers", force: :cascade do |t|
     t.integer "patient_id"
-    t.integer "symptom_ids"
+    t.integer "symptom_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

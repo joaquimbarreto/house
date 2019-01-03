@@ -271,7 +271,6 @@ def create_symptoms
     |disease| disease[:disease_symptoms]
     end
   @all_symptoms.flatten!.uniq!.sort!
-  byebug
   @all_symptoms.each { |s| Symptom.create(name: s, category: @symptoms_and_categories[:s]) }
 end
 

@@ -1,6 +1,6 @@
 class Patient < ApplicationRecord
 
-  has_many :experiences
-  has_many :symptoms, through: :experiences
+  has_many :suffers
+  has_many :symptoms, through: :suffers
 
 end
