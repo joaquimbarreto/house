@@ -1,1 +1,9 @@
-<h2>Suffering From:</h2>
+<h2>Potential Illnesses You May Suffer From:</h2>
+<ul>
+    <% @suffer.possible_issues.each do |issue| %>
+  <li>
+    <%= link_to issue.name, issue %>
+  </li>
+  <% end %>
+
+</ul>
