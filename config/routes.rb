@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  get 'session/new'
-  get 'session/create'
-  get 'session/destroy'
+  # get 'session/new'
+  # get 'session/create'
+  # get 'session/destroy'
+  # sessions management
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/sessions', to: 'sessions#create', as: 'sessions'
+  post '/logout', to: 'sessions#destroy', as: 'logout'
   get 'welcome/index'
   resources :suffers
   resources :patients

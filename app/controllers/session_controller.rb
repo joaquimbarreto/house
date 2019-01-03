@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   end
 
   def create
-    patient = User.find_by(name: params[:name])
+    patient = Patient.find_by(name: params[:name])
     if patient && patient.authenticate(params[:password])
       session[:user_id] = patient.id
       redirect_to welcome_index_path
