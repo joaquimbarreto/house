@@ -41,7 +41,7 @@ class SuffersController < ApplicationController
   private
 
   def suffer_params
-    p = params.require(:suffer).permit(:patient_id, symptom_ids: [])
+    p= params.require(:suffer).permit(:patient_id, symptom_ids: [])
    p[:symptom_ids] = p[:symptom_ids].reject(&:blank?)
    p
   end

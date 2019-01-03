@@ -1,6 +1,14 @@
 <h2>Suffering From:</h2>
 
+<ul>
+  <% @suffer.symptoms.each do |symptom| %>
+  <li>
+    <%= symptom.name %>
+  </li>
+  <% end %>
+</ul>
 
 
+<p><%= link_to"Suffers", suffers_path %></p>
 
 <p><%= link_to"Home", welcome_index_path %></p>

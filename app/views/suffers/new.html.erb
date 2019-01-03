@@ -4,7 +4,7 @@
 
   <%= f.collection_select :patient_id, Patient.all, :id, :name %>
 
-  <%= f.collection_select :symptom_id, Symptom.all, :id, :name %><br>
+  <%= f.collection_check_boxes :symptom_ids, Symptom.all, :id, :name %><br>
 
   <%= f.submit "Diagnosis"%>
 

@@ -4,7 +4,7 @@ class Suffer < ApplicationRecord
   serialize :symptom_ids
 
   def symptoms
-    symptom_ids.map{|i| Sympton.find(i) }
+    symptom_ids.map{|i| Symptom.find_by(i) }
   end
 
 end
