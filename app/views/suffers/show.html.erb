@@ -1,17 +1,19 @@
 <h2>Possible Illnesses:</h2>
-<ul>
+
+<div class="container mt-2">
+
+  <ul class="list-group">
     <% @suffer_issues.each do |issue| %>
-  <li>
-    <br><u><%= link_to issue.name, issue %></u>
-    <br>Matching symptoms:
-    <ul>
-      <% @matching_symptoms = issue.symptoms & @suffer_symptoms %>
-    <% @matching_symptoms.each do |symptom| %>
-      <li>
-        <%= symptom.name %>
-      </li>
-    </ul>
-  </li>
+    <li class="list-group-item">
+      <%= link_to issue.name, issue %>
+        <ul class="list-group">
+          Matching symptoms:
+          <% @matching_symptoms = issue.symptoms & @suffer_symptoms %>
+          <% @matching_symptoms.each do |symptom| %>
+          <li class="list-group-item"><%= symptom.name %></li>
+          <% end %>
+        </ul>
+    </li>
   <% end %>
-<% end %>
-</ul>
+  </ul>
+</div>
