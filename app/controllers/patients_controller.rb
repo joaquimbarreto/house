@@ -14,9 +14,15 @@ class PatientsController < ApplicationController
   end
 
   def create
-    @patient = Patient.create(patient_params)
-    redirect_to patient_path(@patient)
+  @patient = Patient.new(patient_params)
+  if @patient.valid?
+    @patient.save
+    session[:patient_id] = @patient.id
+    redirect_to patients_path
+  else
+    redirect_to signup_path
   end
+end
 
   def edit
 
@@ -35,7 +41,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:name)
+    params.require(:patient).permit(:name, :password)
   end
 
   def find_patient

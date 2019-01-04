@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   # get 'session/new'
   # get 'session/create'
   # get 'session/destroy'
+  
   # sessions management
   get '/login', to: 'sessions#new', as: 'login'
   post '/sessions', to: 'sessions#create', as: 'sessions'
   post '/logout', to: 'sessions#destroy', as: 'logout'
+
+  # user account management
+  get '/signup', to: 'patients#new', as: 'signup'
+  post '/signup', to: 'patients#create'
+  get '/patients/:id', to: 'patients#show', as: 'patient'
+
   get 'welcome/index'
   resources :suffers
   resources :patients

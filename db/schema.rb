@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2019_01_03_154121) do
 
   create_table "diagnoses", force: :cascade do |t|
-    t.integer "symptom_id"
     t.integer "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_01_03_154121) do
 
   create_table "patients", force: :cascade do |t|
     t.string "name"
+    t.string "password_digest"
+    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

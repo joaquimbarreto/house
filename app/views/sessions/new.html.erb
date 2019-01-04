@@ -1,0 +1,16 @@
+
+<div class="container">
+
+  <%= form_tag sessions_path do %>
+  <form class="form-signin">
+    <img class="mb-4" src="/docs/4.2/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputName"  class="sr-only"> <%= label_tag :name %></label>
+    <input type="text" placeholder="User Name" <%= text_field_tag :name %>
+    <label for="inputPassword"  class="sr-only"> <%= label_tag :password %></label>
+    <input type="password" placeholder="Password" <%= password_field_tag :password %>
+    <button class="btn btn-lg btn-dark" type="submit"> <%= submit_tag "Login" %></button>
+    <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+  </form>
+  <% end %>
+</div>

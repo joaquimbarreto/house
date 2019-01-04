@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+  helper_method :current_patient, :logged_in?
 
    def current_patient
      if session[:patient_id]
-       Patient.find(session[:user_id])
+       Patient.find(session[:patient_id])
      else
        Patient.new
      end
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
    def authorized_for(target_patient_id)
      if current_patient.id != target_patient_id.to_i && current_patient.admin != true
        flash[:authorized] = "You cannot view a page that does not belong to you!"
-       redirect_to welcome_index_path
+       redirect_to login_path
      end
    end
 end
