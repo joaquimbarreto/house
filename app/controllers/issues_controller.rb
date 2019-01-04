@@ -12,4 +12,6 @@ class IssuesController < ApplicationController
     self.diagnoses.symptom_ids
   end
 
+  
+
 end

@@ -2,13 +2,15 @@
 <ul>
     <% @suffer_issues.each do |issue| %>
   <li>
-    <%= link_to issue.name, issue %>
+    <br><u><%= link_to issue.name, issue %></u>
     <br>Matching symptoms:
     <ul>
-    <%@suffer_symptoms.each do |symptom| %>
-    <li>
-      <%= symptom.name %>
+      <% @matching_symptoms = issue.symptoms & @suffer_symptoms %>
+    <% @matching_symptoms.each do |symptom| %>
+      <li>
+        <%= symptom.name %>
       </li>
+    </ul>
   </li>
   <% end %>
 <% end %>
