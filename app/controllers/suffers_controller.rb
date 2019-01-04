@@ -25,7 +25,8 @@ class SuffersController < ApplicationController
     # add_column :suffer, :symptom_ids, array: true, default: []
     #suffer_params[:sympton_id]
     @suffer = Suffer.create(suffer_params)
-    @suffer.possible_issues = @suffer.symptoms.map {|s| s.possible_issues}
+
+    # @suffer.possible_issues = @suffer.symptoms.map {|s| s.possible_issues}
     redirect_to suffer_path(@suffer)
 
   end
@@ -47,7 +48,7 @@ class SuffersController < ApplicationController
   private
 
   def suffer_params
-    p= params.require(:suffer).permit(:patient_id, symptom_ids: [])
+    p = params.require(:suffer).permit(:patient_id, symptom_ids: [])
    p[:symptom_ids] = p[:symptom_ids].reject(&:blank?)
    p
   end

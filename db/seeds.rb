@@ -1,6 +1,16 @@
 Issue.destroy_all
 Symptom.destroy_all
 Diagnosis.destroy_all
+Patient.destroy_all
+
+Patient.create([
+{name: "Tim",
+password: "tim",
+admin: true},
+{name: "Jim",
+password: "jim",
+admin: false}
+])
 
 @array_of_disease_hashes = [
             {
