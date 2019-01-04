@@ -1,3 +1,5 @@
+
+
 class SuffersController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :find_suffer, only: [:show, :edit, :update, :destroy]
@@ -6,8 +8,12 @@ class SuffersController < ApplicationController
     @suffers = Suffer.all
   end
 
-  def show
 
+
+  def show
+    #@suffer_symptom_names = @suffer.symptoms.map {|s| s.name}
+    @suffer_symptoms = @suffer.symptom_ids.map {|i| Symptom.find(i)}
+    @suffer_issues = @suffer_symptoms.map {|s| s.possible_issues}.flatten.uniq
   end
 
   def new
@@ -25,8 +31,9 @@ class SuffersController < ApplicationController
     # add_column :suffer, :symptom_ids, array: true, default: []
     #suffer_params[:sympton_id]
     @suffer = Suffer.create(suffer_params)
+    #@suffer_issues = @suffer_symptoms.map {|s| s.possible_issues}.flatten
 
-    # @suffer.possible_issues = @suffer.symptoms.map {|s| s.possible_issues}
+
     redirect_to suffer_path(@suffer)
 
   end

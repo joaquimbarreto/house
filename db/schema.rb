@@ -39,8 +39,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_154121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "symptom_ids", default: "--- []\n"
-    t.string "possible_issues"
-    t.string "text"
+    t.text "possible_issues", default: "--- []\n"
   end
 
   create_table "symptoms", force: :cascade do |t|
