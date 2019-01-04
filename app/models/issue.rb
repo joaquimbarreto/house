@@ -9,7 +9,15 @@ def symptoms
   diagnoses.split(",").last.last.symptom_ids
   @symptom_ids_of_issue.map {|symptom_id| Symptom.find(symptom_id)}
 end
+
+
+def matching_suffer_symptoms(symptom_array)
+  @suffer_array & self.symptoms
 end
+
+
+end
+
 
 
 
