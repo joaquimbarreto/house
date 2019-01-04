@@ -283,8 +283,10 @@ def create_symptoms
     end
   @all_symptoms.flatten!.uniq!.sort!
 
-  @all_symptoms.each { |s| Symptom.create(name: s, category: @symptoms_and_categories[:s]) }
+  @all_symptoms.each { |s| Symptom.create(name: s, category: @symptoms_and_categories[:"#{s}"]) }
+byebug
 end
+
 
 def create_diagnoses
   @array_of_disease_hashes.each do |h|
